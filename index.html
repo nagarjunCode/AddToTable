@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>jQuery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+<script>
+$(document).ready(function(){
+   var id=0;var i =0;
+    
+    
+    $("button").click(function(e){
+        e.preventDefault();
+        var tempName = $('input[name=name-box]').val();
+                 var tempEmail = $('input[name=email-box]').val();
+                 var tempAge = $('input[name=age-box]').val();
+                 var tempPhone = $('input[name=phone-box]').val();
+                 
+               // $('.tablerow').append('<td>' + tempName + '</td><td>' + tempEmail + '</td><td>' + tempAge + '</td><td>' + tempPhone + '</td><td><a href="#" class ="edit "> edit </a></td> <td> <a href="#" class="close"> X </a></td></tr>');
+        
+        id++;
+                $('#myTable tr:last').after('<tr class="child"><td>'+id+'<\/td> <td>'+tempName+'<\/td> <td>'+tempEmail+'<\/td> <td>'+tempAge+'<\/td>                           <td>'+tempPhone+'<\/td><td> <a href="#" id="#edt" class ="edit"> edit </a> <\/td>                                                                           <td><a href="#" class="close"> X </a><\/td></tr>');
+      
+    $('input[type=text]').each(function() {
+       $(this).val('');
+    });
+        
+});
+    
+/*function AutoNumber(){
+    $('table tr').each(function(i){
+        $(this).find('span').text(i);
+    });
+*/
+    
+ $("#myTable").on('click','.close',function(){
+    var idval=0;
+     $(this).closest('tr').remove();
+     
+  /*  
+     var table=document.getElementById("myTable");
+    var table_len=(table.rows.length)-1;
+     alert(--table_len);
+     
+    var table = document.getElementById("mytab1");
+for (var i = 1;i<=table_len;i++){
+    idval=parseInt(idval);
+    ++idval;
+   $('#myTable').find('tr').eq(i).text(idval);
+    
+    
+    
+ var tmp=$("#myTable tr:eq("+i+") td:eq(1)").text();
+    alert("tmp "+tmp);
+    $('#myTable').find('td').eq(2).text(tmp);
+    
+   //   tmp=$("#myTable td:eq("+i+") td:eq(2)").text();
+    $('#myTable').find('td').eq(3).text(tmp);
+     // tmp=$("#myTable td:eq("+i+") td:eq(3)").text();
+    $('#myTable').find('td').eq(4).text(tmp);
+    //  tmp=$("#myTable td:eq("+i+") td:eq(4)").text();
+    $('#myTable').find('td').eq(5).text(tmp);
+}
+
+ */   
+     
+ });
+
+ 
+    
+$('body').delegate('table#myTable tr ','click',function(){
+var tid=$(this).find('td:first').text();
+//   alert(tid);
+    tid=parseInt(tid);
+    tid++;
+    var tname= $("#myTable tr:eq("+tid+") td:eq(1)").text();
+    var temail=$("#myTable tr:eq("+tid+") td:eq(2)").text();
+    var tage=  $("#myTable tr:eq("+tid+") td:eq(3)").text();
+    var tph=   $("#myTable tr:eq("+tid+") td:eq(4)").text();
+    
+            
+    
+    //var t = document.getElementById('myTable');
+    //var tmp= $(t).find('tr: eq(tid) td:eq(2)').text();
+    
+    
+    //document.getElementById('#tb1').value=$('#myTable tr:eq(2) td:eq(1)').text();
+    
+    //document.getElementById('#tb1').value=tid.cells[1].innerHTMLl;
+    
+   $('#tb1').val(tname);
+   $('#tb2').val(temail);
+   $('#tb3').val(tage);
+   $('#tb4').val(tph);
+   
+     });
+    
+    /*
+ $("#myTable tr").click(function(){
+       var str=this.innerText;
+     var i = str.split('').indexOf(" ");
+     alert (str.slice(0,i));
+
+    });*/
+    //$('body').delegate('table#myTable tr','click',function(){
+      //    alert();
+
+    //});
+    
+    
+});
+ 
+
+</script>
+    
+ 
+    
+    
+    
+    
+    
+</head>
+<body>
+    <div class="container">
+<form>
+  Name<br>
+    <input type="text" name="name-box" id="tb1">
+    <br>
+    Email<br>
+    <input type="text" name="email-box" id="tb2">
+    <br>
+    Age<br>
+    <input type="text" name="age-box" id="tb3">
+    <br>
+    Phone<br>
+    <input type="text" name="phone-box" id="tb4">
+    <br>
+    <br>
+    <button id="save">Add  </button>
+    
+</form>
+   <div>
+  <table id="myTable">
+    <tr>
+    <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Phone</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr class="tablerow">
+      
+    </tr>
+    
+  </table>
+</div>
+        
+       
+</div>
+</body>
+</html>
